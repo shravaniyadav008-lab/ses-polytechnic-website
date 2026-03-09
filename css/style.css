@@ -787,3 +787,127 @@ nav ul li a:hover {
 .map-section {
     margin-top: 40px;
 }
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width:768px) {
+
+    /* Top Bar */
+    .top-bar {
+        text-align: center;
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    /* Header */
+    .main-header {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .logo {
+        position: static;
+        margin-bottom: 10px;
+    }
+
+    .logo img {
+        width: 90px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+    }
+
+    .title h2 {
+        font-size: 16px;
+    }
+
+    /* Navigation */
+    nav ul li {
+        display: block;
+        border-bottom: 1px solid #004080;
+    }
+
+    nav ul li a {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    /* Hero Section */
+    .hero {
+        height: 60vh;
+    }
+
+    .hero-content h2 {
+        font-size: 24px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+    }
+
+    /* Faculty Cards */
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .card img {
+        width: 90px;
+        height: 90px;
+    }
+
+    /* Vision Mission */
+    .vm-container {
+        padding: 30px 15px;
+        gap: 20px;
+    }
+
+    .vm-card {
+        width: 100%;
+    }
+
+    /* HOD */
+    .hod-card {
+        padding: 20px;
+    }
+
+    .hod-card img {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* Labs */
+    .lab-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .lab-left {
+        min-width: auto;
+    }
+
+    /* Students */
+    .student-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Gallery */
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-img {
+        height: 180px;
+    }
+
+    /* Contact */
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer */
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}

@@ -149,3 +149,12 @@ images.forEach(function(img) {
 close.onclick = function() {
     lightbox.style.display = "none";
 }
+
+// Mobile Menu Toggle
+
+const toggle = document.getElementById("menu-toggle");
+const menu = document.getElementById("nav-menu");
+
+toggle.addEventListener("click", () => {
+    menu.classList.toggle("show");
+});

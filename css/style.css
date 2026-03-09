@@ -914,6 +914,10 @@ nav ul li a:hover {
 
 /* Hamburger Menu */
 
+.menu-toggle{
+display:none;
+}
+
 @media(max-width:768px){
 
 .menu-toggle{

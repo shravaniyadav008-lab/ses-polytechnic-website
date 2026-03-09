@@ -152,11 +152,15 @@ close.onclick = function() {
 
 // Mobile Menu Toggle
 
+document.addEventListener("DOMContentLoaded", function(){
+
 const toggle = document.getElementById("menu-toggle");
 const menu = document.getElementById("nav-menu");
 
-if(toggle && menu){
+if(toggle){
 toggle.addEventListener("click", function(){
 menu.classList.toggle("show");
 });
 }
+
+});

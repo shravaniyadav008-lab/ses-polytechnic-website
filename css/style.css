@@ -915,35 +915,27 @@ nav ul li a:hover {
 /* Hamburger Menu */
 
 .menu-toggle{
-    display:none;
-    font-size:28px;
-    background:#003366;
-    color:white;
-    padding:10px 15px;
-    cursor:pointer;
+display:none;
 }
-
-/* Mobile Menu */
 
 @media(max-width:768px){
 
 .menu-toggle{
 display:block;
+font-size:28px;
+background:#003366;
+color:white;
+padding:10px;
+cursor:pointer;
 }
 
 nav ul{
 display:none;
 flex-direction:column;
-width:100%;
 }
 
 nav ul.show{
 display:flex;
-}
-
-nav ul li{
-display:block;
-text-align:center;
 }
 
 }

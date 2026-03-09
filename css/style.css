@@ -932,6 +932,8 @@ cursor:pointer;
 nav ul{
 display:none;
 flex-direction:column;
+background:#003366;
+width:100%;
 }
 
 nav ul.show{

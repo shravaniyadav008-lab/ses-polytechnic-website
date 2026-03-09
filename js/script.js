@@ -1,4 +1,4 @@
-// Faculty Details Show Function
+// ================= FACULTY DETAILS SHOW =================
 
 function showFaculty(id) {
 
@@ -8,18 +8,21 @@ function showFaculty(id) {
         box.style.display = "none";
     });
 
-    document.getElementById(id).style.display = "block";
-
+    var selected = document.getElementById(id);
+    if(selected){
+        selected.style.display = "block";
+    }
 }
 
 
-
-/* ================= SLIDER ================= */
+// ================= SLIDER =================
 
 let slides = document.querySelectorAll(".slide");
 let index = 0;
 
 function showSlide() {
+
+    if(slides.length === 0) return;
 
     slides.forEach((slide) => {
         slide.classList.remove("active");
@@ -35,10 +38,13 @@ function showSlide() {
 
 }
 
-setInterval(showSlide, 4000);
+if(slides.length > 0){
+    slides[0].classList.add("active");
+    setInterval(showSlide, 4000);
+}
 
 
-/* ================= FACULTY DETAILS ================= */
+// ================= FACULTY DETAILS BUTTON =================
 
 let buttons = document.querySelectorAll(".details-btn");
 
@@ -47,6 +53,8 @@ buttons.forEach(function(btn) {
     btn.addEventListener("click", function() {
 
         let detailBox = this.nextElementSibling;
+
+        if (!detailBox) return;
 
         if (detailBox.style.display === "block") {
             detailBox.style.display = "none";
@@ -60,33 +68,39 @@ buttons.forEach(function(btn) {
 
 });
 
-/* Scroll Animation */
+
+// ================= SCROLL ANIMATION =================
 
 const faders = document.querySelectorAll('.fade-in');
+
+if(faders.length > 0){
 
 const appearOptions = {
     threshold: 0.2,
     rootMargin: "0px 0px -50px 0px"
 };
 
-const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+
     entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-            return;
-        } else {
-            entry.target.classList.add('show');
-            appearOnScroll.unobserve(entry.target);
-        }
+
+        if (!entry.isIntersecting) return;
+
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+
     });
+
 }, appearOptions);
 
 faders.forEach(fader => {
     appearOnScroll.observe(fader);
 });
 
-window.addEventListener("scroll", reveal);
+}
 
-/* LAB CARD SCROLL ANIMATION */
+
+// ================= LAB CARD SCROLL =================
 
 let reveals = document.querySelectorAll(".reveal");
 
@@ -108,49 +122,37 @@ function revealOnScroll() {
 
 window.addEventListener("scroll", revealOnScroll);
 
-function reveal() {
 
-    var reveals = document.querySelectorAll(".reveal");
-
-    for (var i = 0; i < reveals.length; i++) {
-
-        var windowHeight = window.innerHeight;
-        var elementTop = reveals[i].getBoundingClientRect().top;
-        var elementVisible = 150;
-
-        if (elementTop < windowHeight - elementVisible) {
-            reveals[i].classList.add("active");
-        }
-
-    }
-}
-
-window.addEventListener("scroll", reveal);
-
-
-// Lightbox Gallery
+// ================= GALLERY LIGHTBOX =================
 
 var images = document.querySelectorAll(".gallery-img");
 var lightbox = document.getElementById("lightbox");
 var lightboxImg = document.getElementById("lightbox-img");
-var close = document.querySelector(".close");
+var closeBtn = document.querySelector(".close");
 
 images.forEach(function(img) {
 
     img.addEventListener("click", function() {
 
-        lightbox.style.display = "flex";
-        lightboxImg.src = this.src;
+        if(lightbox && lightboxImg){
+            lightbox.style.display = "flex";
+            lightboxImg.src = this.src;
+        }
 
     });
 
 });
 
-close.onclick = function() {
+if(closeBtn && lightbox){
+
+closeBtn.onclick = function() {
     lightbox.style.display = "none";
 }
 
-// Mobile Menu Toggle
+}
+
+
+// ================= MOBILE MENU TOGGLE =================
 
 document.addEventListener("DOMContentLoaded", function(){
 

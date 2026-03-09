@@ -1,4 +1,4 @@
-// ================= FACULTY DETAILS SHOW =================
+// ================= FACULTY DETAILS SHOW FUNCTION =================
 
 function showFaculty(id) {
 
@@ -8,9 +8,9 @@ function showFaculty(id) {
         box.style.display = "none";
     });
 
-    var selected = document.getElementById(id);
-    if(selected){
-        selected.style.display = "block";
+    var element = document.getElementById(id);
+    if (element) {
+        element.style.display = "block";
     }
 }
 
@@ -22,7 +22,7 @@ let index = 0;
 
 function showSlide() {
 
-    if(slides.length === 0) return;
+    if (slides.length === 0) return;
 
     slides.forEach((slide) => {
         slide.classList.remove("active");
@@ -38,13 +38,13 @@ function showSlide() {
 
 }
 
-if(slides.length > 0){
+if (slides.length > 0) {
     slides[0].classList.add("active");
     setInterval(showSlide, 4000);
 }
 
 
-// ================= FACULTY DETAILS BUTTON =================
+// ================= FACULTY DETAILS =================
 
 let buttons = document.querySelectorAll(".details-btn");
 
@@ -73,34 +73,34 @@ buttons.forEach(function(btn) {
 
 const faders = document.querySelectorAll('.fade-in');
 
-if(faders.length > 0){
+if (faders.length > 0) {
 
-const appearOptions = {
-    threshold: 0.2,
-    rootMargin: "0px 0px -50px 0px"
-};
+    const appearOptions = {
+        threshold: 0.2,
+        rootMargin: "0px 0px -50px 0px"
+    };
 
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
 
-    entries.forEach(entry => {
+        entries.forEach(entry => {
 
-        if (!entry.isIntersecting) return;
+            if (!entry.isIntersecting) return;
 
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target);
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
 
+        });
+
+    }, appearOptions);
+
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
     });
-
-}, appearOptions);
-
-faders.forEach(fader => {
-    appearOnScroll.observe(fader);
-});
 
 }
 
 
-// ================= LAB CARD SCROLL =================
+// ================= LAB CARD SCROLL ANIMATION =================
 
 let reveals = document.querySelectorAll(".reveal");
 
@@ -123,7 +123,29 @@ function revealOnScroll() {
 window.addEventListener("scroll", revealOnScroll);
 
 
-// ================= GALLERY LIGHTBOX =================
+// ================= REVEAL ANIMATION =================
+
+function reveal() {
+
+    var reveals = document.querySelectorAll(".reveal");
+
+    for (var i = 0; i < reveals.length; i++) {
+
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+        }
+
+    }
+}
+
+window.addEventListener("scroll", reveal);
+
+
+// ================= LIGHTBOX GALLERY =================
 
 var images = document.querySelectorAll(".gallery-img");
 var lightbox = document.getElementById("lightbox");
@@ -134,7 +156,7 @@ images.forEach(function(img) {
 
     img.addEventListener("click", function() {
 
-        if(lightbox && lightboxImg){
+        if (lightbox && lightboxImg) {
             lightbox.style.display = "flex";
             lightboxImg.src = this.src;
         }
@@ -143,11 +165,11 @@ images.forEach(function(img) {
 
 });
 
-if(closeBtn && lightbox){
+if (closeBtn && lightbox) {
 
-closeBtn.onclick = function() {
-    lightbox.style.display = "none";
-}
+    closeBtn.onclick = function() {
+        lightbox.style.display = "none";
+    }
 
 }
 
@@ -156,17 +178,17 @@ closeBtn.onclick = function() {
 
 document.addEventListener("DOMContentLoaded", function(){
 
-const toggle = document.getElementById("menu-toggle");
-const menu = document.getElementById("nav-menu");
+    const toggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("nav-menu");
 
-if(toggle && menu){
+    if(toggle && menu){
 
-toggle.addEventListener("click", function(){
+        toggle.addEventListener("click", function(){
 
-menu.classList.toggle("show");
+            menu.classList.toggle("show");
 
-});
+        });
 
-}
+    }
 
 });
